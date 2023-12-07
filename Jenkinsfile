@@ -27,5 +27,18 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
+
+                stage('Pause') {
+            steps {
+                // Jeda eksekusi pipeline selama 1 menit
+                sleep time: 60, unit: 'SECONDS'
+            }
+        }
+        stage('End Application') {
+            steps {
+                // Perintah untuk mengakhiri aplikasi
+                sh 'end_application.sh'
+            }
+        }
     }
 }
